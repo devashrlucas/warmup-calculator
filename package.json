@@ -1,0 +1,25 @@
+{
+  "name": "warmup-calculator",
+  "version": "1.0.0",
+  "description": "Calculator for sets, reps, and weight plate quantities for warmup sets used in weightlifting (lb)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/devashrlucas/warmup-calculator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/devashrlucas/warmup-calculator/issues"
+  },
+  "homepage": "https://github.com/devashrlucas/warmup-calculator#readme",
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2"
+  }
+}
