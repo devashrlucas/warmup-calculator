@@ -46,4 +46,4 @@ var startInput = document.querySelector('#start').innerText;
   console.log(startText);
 }
 
-getInputs();
+getInputs(); 
