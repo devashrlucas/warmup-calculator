@@ -40,15 +40,15 @@ function getInputs() {
   let endText = '';
   const inputArray = [];
   let i;
-    for (i = 0; i < barInput.length; i++) {
-        barText += barInput.charAt(i);
-    }
-    inputArray.push(barText);
-  for (i = 0; i < startInput.length; i++) {
+  for (i = 0; i < barInput.length; i += 1) {
+    barText += barInput.charAt(i);
+  }
+  inputArray.push(barText);
+  for (i = 0; i < startInput.length; i += 1) {
     startText += startInput.charAt(i);
   }
   inputArray.push(startText);
-  for (i = 0; i < endInput.length; i++) {
+  for (i = 0; i < endInput.length; i += 1) {
     endText += endInput.charAt(i);
   }
   inputArray.push(endText);
@@ -59,5 +59,16 @@ let inputWeight = getInputs();
 
 function getWarmupSetWeights() {
   let warmupSetWeights = [];
-  let setEquation = ((inputWeight[1] - inputWeight[0]) / 4);
+  let weightJump = ((inputWeight[2] - inputWeight[1]) / 4);
+  let tempJump = (Number(inputWeight[0]));
+  let i;
+
+  warmupSetWeights.push(inputWeight[0]);
+
+  for (i = 0; i < 4; i += 1) {
+    tempJump += weightJump;
+    warmupSetWeights.push(tempJump);
+  }
+
+  return warmupSetWeights;
 }
