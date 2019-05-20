@@ -23,7 +23,6 @@
     "eslint-plugin-import": "^2.17.2"
   },
   "dependencies": {
-    "jsdom": "^15.1.0",
     "mathjs": "^5.10.0"
   }
 }
