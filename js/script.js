@@ -55,7 +55,7 @@ function getInputs() {
   return inputArray;
 }
 
-let inputWeight = getInputs();
+const inputWeight = getInputs();
 
 function getWarmupSetWeights() {
   let warmupSetWeights = [];
@@ -69,6 +69,25 @@ function getWarmupSetWeights() {
     tempJump += weightJump;
     warmupSetWeights.push(tempJump);
   }
-
   return warmupSetWeights;
+}
+
+const inputWarmupSetWeights = getWarmupSetWeights();
+
+function roundUpWarmupSetWeights() {
+  let roundedWarmupSetWeights = [];
+  let tempRounded = 0;
+  let i;
+
+  for (i = 0; i < inputWarmupSetWeights.length; i += 1) {
+    tempRounded = Math.ceil(inputWarmupSetWeights[i] / 5) * 5;
+    roundedWarmupSetWeights.push(tempRounded);
+  }
+  return roundedWarmupSetWeights;
+}
+
+const inputRoundedWarmupSetWeight = roundUpWarmupSetWeights();
+
+function getOneSideWeight () {
+  
 }
