@@ -88,6 +88,19 @@ function roundUpWarmupSetWeights() {
 
 const inputRoundedWarmupSetWeight = roundUpWarmupSetWeights();
 
-function getOneSideWeight () {
-  
+function getOneSideWeight() {
+  let oneSideWeight = [];
+  let tempOneSide = 0;
+  let i;
+
+  for (i = 0; i < inputRoundedWarmupSetWeight.length; i += 1) {
+    if (inputRoundedWarmupSetWeight[i] == document.querySelector('#bar').innerHTML) {
+      tempOneSide = 0;
+      oneSideWeight.push(tempOneSide);
+    } else {
+      tempOneSide = inputRoundedWarmupSetWeight[i] / 2;
+      oneSideWeight.push(tempOneSide);
+    }
+  }
+  return oneSideWeight;
 }
