@@ -104,3 +104,13 @@ function getOneSideWeight() {
   }
   return oneSideWeight;
 }
+
+
+const inputOneSideWeight = getOneSideWeight();
+
+
+function plateRemainder(weight, plate) {
+  let newRemainder = weight / plate;
+  let seperatedRemainder = [Math.floor(newRemainder), (weight % plate)];
+  return seperatedRemainder;
+}
