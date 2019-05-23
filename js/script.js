@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 
 /*
 const math = require('mathjs');
@@ -113,4 +114,21 @@ function plateRemainder(weight, plate) {
   let newRemainder = weight / plate;
   let seperatedRemainder = [Math.floor(newRemainder), (weight % plate)];
   return seperatedRemainder;
+}
+
+function weightLoop() {
+  let remainder45 = plateRemainder(inputOneSideWeight[i], 45.0);
+  console.log('45 '.repeat(remainder45[0]));
+
+  let remainder25 = plateRemainder(remainder45[1], 25.0);
+  console.log('25 '.repeat(remainder25[0]));
+
+  let remainder10 = plateRemainder(remainder25[1], 10.0);
+  console.log('10 '.repeat(remainder10[0]));
+
+  let remainder5 = plateRemainder(remainder10[1], 5.0);
+  console.log('5 '.repeat(remainder5[0]));
+
+  let remainder2p5 = plateRemainder(remainder5[1], 2.5);
+  console.log('2.5 '.repeat(remainder2p5[0]));
 }
