@@ -1,45 +1,16 @@
-/* eslint-disable no-console */
-
-/*
-const math = require('mathjs');
-
-let warmupSetWeights = [45, 45, 58, 71, 84, 100];
-let warmUp = [45, 45, 58, 71, 84, 100];
-let roundedList = [45.0, 45.0, 60.0, 75.0, 85.0, 100.0];
-let halfStack = [0.0, 0.0, 7.5, 15.0, 20.0, 27.5];
-
-//$('form').serialize()
-
-const dom = new JSDOM('http://127.0.0.1:50057/');
+var inputWeight = getInputs();
+var inputWarmupSetWeights = getWarmupSetWeights();
+var inputRoundedWarmupSetWeight = roundUpWarmupSetWeights();
+var inputOneSideWeight = getOneSideWeight();
 
 function getInputs() {
-    var startInput = document.getElementsByName('start-weight')[0].value;
-    var startText = '';
-    var i;
-    for (i = 0; i < startInput.length ; i++) {
-        startText += startInput.elements[i].value;
-    }
-}
-
-
-/* Push form data into an array
-
-var formData = [];
-let startWeight = document.getElementById('start').value;
-formData.push(startWeight);
-
-
-console.log(formData);
-*/
-
-function getInputs() {
-  const barInput = document.querySelector('#bar').innerHTML;
+  let barInput = document.querySelector('#bar').innerHTML;
   let barText = '';
-  const startInput = document.querySelector('#start').innerText;
+  let startInput = document.querySelector('#start').innerText;
   let startText = '';
-  const endInput = document.querySelector('#end').innerText;
+  let endInput = document.querySelector('#end').innerText;
   let endText = '';
-  const inputArray = [];
+  let inputArray = [];
   let i;
   for (i = 0; i < barInput.length; i += 1) {
     barText += barInput.charAt(i);
@@ -56,8 +27,6 @@ function getInputs() {
   return inputArray;
 }
 
-const inputWeight = getInputs();
-
 function getWarmupSetWeights() {
   let warmupSetWeights = [];
   let weightJump = ((inputWeight[2] - inputWeight[1]) / 4);
@@ -73,8 +42,6 @@ function getWarmupSetWeights() {
   return warmupSetWeights;
 }
 
-const inputWarmupSetWeights = getWarmupSetWeights();
-
 function roundUpWarmupSetWeights() {
   let roundedWarmupSetWeights = [];
   let tempRounded = 0;
@@ -87,15 +54,13 @@ function roundUpWarmupSetWeights() {
   return roundedWarmupSetWeights;
 }
 
-const inputRoundedWarmupSetWeight = roundUpWarmupSetWeights();
-
 function getOneSideWeight() {
   let oneSideWeight = [];
   let tempOneSide = 0;
   let i;
 
   for (i = 0; i < inputRoundedWarmupSetWeight.length; i += 1) {
-    if (inputRoundedWarmupSetWeight[i] == document.querySelector('#bar').innerHTML) {
+    if (inputRoundedWarmupSetWeight[i] === document.querySelector('#bar').innerHTML) {
       tempOneSide = 0;
       oneSideWeight.push(tempOneSide);
     } else {
@@ -106,10 +71,6 @@ function getOneSideWeight() {
   return oneSideWeight;
 }
 
-
-const inputOneSideWeight = getOneSideWeight();
-
-
 function plateRemainder(weight, plate) {
   let newRemainder = weight / plate;
   let seperatedRemainder = [Math.floor(newRemainder), (weight % plate)];
@@ -117,18 +78,52 @@ function plateRemainder(weight, plate) {
 }
 
 function weightLoop() {
-  let remainder45 = plateRemainder(inputOneSideWeight[i], 45.0);
-  console.log('45 '.repeat(remainder45[0]));
-
+  let weightLoopArray = [];
+  let filteredArray = [];
+  let i;
+  let remainder45 = plateRemainder(inputOneSideWeight[1], 45.0);
   let remainder25 = plateRemainder(remainder45[1], 25.0);
-  console.log('25 '.repeat(remainder25[0]));
-
   let remainder10 = plateRemainder(remainder25[1], 10.0);
-  console.log('10 '.repeat(remainder10[0]));
-
   let remainder5 = plateRemainder(remainder10[1], 5.0);
-  console.log('5 '.repeat(remainder5[0]));
-
   let remainder2p5 = plateRemainder(remainder5[1], 2.5);
-  console.log('2.5 '.repeat(remainder2p5[0]));
+
+  for (i = 0; i < remainder45[0]; i += 1) {
+    if (remainder45[0] === 0) {
+      weightLoopArray.push('');
+    } else {
+      weightLoopArray.push(45);
+    }
+  }
+  for (i = 0; i < remainder25[0]; i += 1) {
+    if (remainder25[0] === 0) {
+      weightLoopArray.push('');
+    } else {
+      weightLoopArray.push(25);
+    }
+  }
+  for (i = 0; i < remainder10[0]; i += 1) {
+    if (remainder10[0] === 0) {
+      weightLoopArray.push('');
+    } else {
+      weightLoopArray.push(10);
+    }
+  }
+  for (i = 0; i < remainder5[0]; i += 1) {
+    if (remainder5[0] === 0) {
+      weightLoopArray.push('');
+    } else {
+      weightLoopArray.push(5);
+    }
+  }
+  for (i = 0; i < remainder2p5[0]; i += 1) {
+    if (remainder2p5[0] === 0) {
+      weightLoopArray.push('');
+    } else {
+      weightLoopArray.push(2.5);
+    }
+  }
+  filteredArray = weightLoopArray.filter(function (f) {
+    return f != '';
+  });
+  return filteredArray;
 }
