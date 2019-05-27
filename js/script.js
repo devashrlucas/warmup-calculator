@@ -77,10 +77,10 @@ function plateRemainder(weight, plate) {
   return seperatedRemainder;
 }
 
-function weightLoop() {
+function weightLoop(i) {
   let weightLoopArray = [];
   let filteredArray = [];
-  let remainder45 = plateRemainder(inputOneSideWeight[i], 45.0);
+  let remainder45 = plateRemainder(i, 45.0);
   let remainder25 = plateRemainder(remainder45[1], 25.0);
   let remainder10 = plateRemainder(remainder25[1], 10.0);
   let remainder5 = plateRemainder(remainder10[1], 5.0);
@@ -127,4 +127,8 @@ function weightLoop() {
   return filteredArray;
 }
 
-//function fullLoop() {}
+function fullLoop() {
+  inputOneSideWeight.forEach(function (item) {
+    console.log(item);
+  });
+}
