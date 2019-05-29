@@ -3,6 +3,7 @@ var inputWarmupSetWeights = getWarmupSetWeights();
 var inputRoundedWarmupSetWeight = roundUpWarmupSetWeights();
 var inputOneSideWeight = getOneSideWeight();
 
+
 function getInputs() {
   let barInput = document.querySelector('#bar').innerHTML;
   let barText = '';
@@ -129,8 +130,9 @@ function weightLoop(x) {
 
 function fullLoop() {
   let i;
-  inputOneSideWeight.forEach(function (item) {
-    x = item;
-    console.log(weightLoop(x));
-  });
+  for (i = 0; i < inputOneSideWeight.length; i += 1) {
+    return inputOneSideWeight[i];
+    //return weightLoop(inputOneSideWeight[i]);
+    //console.log(weightLoop(inputOneSideWeight[i]));
+  }
 }
