@@ -128,9 +128,10 @@ function weightLoop(x) {
   return filteredArray;
 }
 
-weightLoop(inputOneSideWeight[0])
-weightLoop(inputOneSideWeight[1])
-weightLoop(inputOneSideWeight[2])
-weightLoop(inputOneSideWeight[3])
-weightLoop(inputOneSideWeight[4])
+document.getElementById('first-set-plates').innerHTML = 'Empty bar';
+document.getElementById('second-set-plates').innerHTML = weightLoop(inputOneSideWeight[0]);
+document.getElementById('third-set-plates').innerHTML = weightLoop(inputOneSideWeight[1]);
+document.getElementById('fourth-set-plates').innerHTML = weightLoop(inputOneSideWeight[2]);
+document.getElementById('fifth-set-plates').innerHTML = weightLoop(inputOneSideWeight[3]);
+document.getElementById('working-set-plates').innerHTML = weightLoop(inputOneSideWeight[4]);
 
