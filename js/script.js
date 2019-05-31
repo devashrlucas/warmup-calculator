@@ -127,8 +127,14 @@ function weightLoop(x) {
   });
   return filteredArray;
 }
+document.getElementById('first-set-weight').innerHTML = 'Empty bar';
+document.getElementById('second-set-weight').innerHTML = inputRoundedWarmupSetWeight[0];
+document.getElementById('third-set-weight').innerHTML = inputRoundedWarmupSetWeight[1];
+document.getElementById('fourth-set-weight').innerHTML = inputRoundedWarmupSetWeight[2];
+document.getElementById('fifth-set-weight').innerHTML = inputRoundedWarmupSetWeight[3];
+document.getElementById('working-set-weight').innerHTML = inputRoundedWarmupSetWeight[4];
 
-document.getElementById('first-set-plates').innerHTML = 'Empty bar';
+
 document.getElementById('second-set-plates').innerHTML = weightLoop(inputOneSideWeight[0]);
 document.getElementById('third-set-plates').innerHTML = weightLoop(inputOneSideWeight[1]);
 document.getElementById('fourth-set-plates').innerHTML = weightLoop(inputOneSideWeight[2]);
