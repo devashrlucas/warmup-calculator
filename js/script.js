@@ -128,11 +128,9 @@ function weightLoop(x) {
   return filteredArray;
 }
 
-function fullLoop() {
-  let i;
-  for (i = 0; i < inputOneSideWeight.length; i += 1) {
-    return inputOneSideWeight[i];
-    //return weightLoop(inputOneSideWeight[i]);
-    //console.log(weightLoop(inputOneSideWeight[i]));
-  }
-}
+weightLoop(inputOneSideWeight[0])
+weightLoop(inputOneSideWeight[1])
+weightLoop(inputOneSideWeight[2])
+weightLoop(inputOneSideWeight[3])
+weightLoop(inputOneSideWeight[4])
+
