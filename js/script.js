@@ -5,20 +5,16 @@ var inputOneSideWeight = getOneSideWeight();
 
 
 function getInputs() {
-  let barInput = document.querySelector('#bar').innerHTML;
-  let barText = '';
-  let startInput = document.querySelector('#start').innerText;
+  let barText = '45';
+  let startInput = document.querySelector('#start').value;
   let startText = '';
-  let endInput = document.querySelector('#end').innerText;
+  let endInput = document.querySelector('#end').value;
   let endText = '';
   let inputArray = [];
   let i;
-  for (i = 0; i < barInput.length; i += 1) {
-    barText += barInput.charAt(i);
-  }
   inputArray.push(barText);
   for (i = 0; i < startInput.length; i += 1) {
-    startText += startInput.charAt(i);
+    startText += Number(startInput.charAt(i));
   }
   inputArray.push(startText);
   for (i = 0; i < endInput.length; i += 1) {
@@ -30,11 +26,11 @@ function getInputs() {
 
 function getWarmupSetWeights() {
   let warmupSetWeights = [];
-  let weightJump = ((inputWeight[2] - inputWeight[1]) / 4);
-  let tempJump = (Number(inputWeight[0]));
+  let weightJump = ((getInputs()[2] - getInputs()[1]) / 4);
+  let tempJump = (Number(getInputs()[0]));
   let i;
 
-  warmupSetWeights.push(inputWeight[0]);
+  warmupSetWeights.push(getInputs()[0]);
 
   for (i = 0; i < 4; i += 1) {
     tempJump += weightJump;
@@ -48,8 +44,8 @@ function roundUpWarmupSetWeights() {
   let tempRounded = 0;
   let i;
 
-  for (i = 0; i < inputWarmupSetWeights.length; i += 1) {
-    tempRounded = Math.ceil(inputWarmupSetWeights[i] / 5) * 5;
+  for (i = 0; i < getWarmupSetWeights().length; i += 1) {
+    tempRounded = Math.ceil(getWarmupSetWeights()[i] / 5) * 5;
     roundedWarmupSetWeights.push(tempRounded);
   }
   return roundedWarmupSetWeights;
@@ -60,12 +56,12 @@ function getOneSideWeight() {
   let tempOneSide = 0;
   let i;
 
-  for (i = 0; i < inputRoundedWarmupSetWeight.length; i += 1) {
-    if (inputRoundedWarmupSetWeight[i] === document.querySelector('#bar').innerHTML) {
+  for (i = 0; i < roundUpWarmupSetWeights().length; i += 1) {
+    if (roundUpWarmupSetWeights()[i] === 45) {
       tempOneSide = 0;
       oneSideWeight.push(tempOneSide);
     } else {
-      tempOneSide = inputRoundedWarmupSetWeight[i] / 2;
+      tempOneSide = roundUpWarmupSetWeights()[i] / 2;
       oneSideWeight.push(tempOneSide);
     }
   }
@@ -81,6 +77,7 @@ function plateRemainder(weight, plate) {
 function weightLoop(x) {
   let weightLoopArray = [];
   let filteredArray = [];
+  let formattedArray = [];
   let remainder45 = plateRemainder(x, 45.0);
   let remainder25 = plateRemainder(remainder45[1], 25.0);
   let remainder10 = plateRemainder(remainder25[1], 10.0);
@@ -125,19 +122,23 @@ function weightLoop(x) {
   filteredArray = weightLoopArray.filter(function (f) {
     return f != '';
   });
-  return filteredArray;
+  formattedArray = filteredArray.join(', ');
+  return formattedArray;
 }
-document.getElementById('first-set-weight').innerHTML = 'Empty bar';
-document.getElementById('second-set-weight').innerHTML = inputRoundedWarmupSetWeight[0];
-document.getElementById('third-set-weight').innerHTML = inputRoundedWarmupSetWeight[1];
-document.getElementById('fourth-set-weight').innerHTML = inputRoundedWarmupSetWeight[2];
-document.getElementById('fifth-set-weight').innerHTML = inputRoundedWarmupSetWeight[3];
-document.getElementById('working-set-weight').innerHTML = inputRoundedWarmupSetWeight[4];
+
+function updateHTML() {
+  document.getElementById('first-set-weight').innerHTML = 'Empty bar';
+  document.getElementById('second-set-weight').innerHTML = roundUpWarmupSetWeights()[0];
+  document.getElementById('third-set-weight').innerHTML = roundUpWarmupSetWeights()[1];
+  document.getElementById('fourth-set-weight').innerHTML = roundUpWarmupSetWeights()[2];
+  document.getElementById('fifth-set-weight').innerHTML = roundUpWarmupSetWeights()[3];
+  document.getElementById('working-set-weight').innerHTML = roundUpWarmupSetWeights()[4];
 
 
-document.getElementById('second-set-plates').innerHTML = weightLoop(inputOneSideWeight[0]);
-document.getElementById('third-set-plates').innerHTML = weightLoop(inputOneSideWeight[1]);
-document.getElementById('fourth-set-plates').innerHTML = weightLoop(inputOneSideWeight[2]);
-document.getElementById('fifth-set-plates').innerHTML = weightLoop(inputOneSideWeight[3]);
-document.getElementById('working-set-plates').innerHTML = weightLoop(inputOneSideWeight[4]);
+  document.getElementById('second-set-plates').innerHTML = weightLoop(getOneSideWeight()[0]);
+  document.getElementById('third-set-plates').innerHTML = weightLoop(getOneSideWeight()[1]);
+  document.getElementById('fourth-set-plates').innerHTML = weightLoop(getOneSideWeight()[2]);
+  document.getElementById('fifth-set-plates').innerHTML = weightLoop(getOneSideWeight()[3]);
+  document.getElementById('working-set-plates').innerHTML = weightLoop(getOneSideWeight()[4]);
 
+}

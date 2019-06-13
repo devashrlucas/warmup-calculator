@@ -9,21 +9,22 @@
 </head>
 
 <body>
-<!-- Saved form for webpage 
+
 <div class="inputs">
-    <form name="input-form" action="" method="POST">
+    <form name="input-form" onsubmit="return false;" action="" method="POST">
         Starting Weight: <input type="text" name="start-weight" id="start"> lb <br>
-        Ending Weight: <input type="text" name="end-weight"> lb <br>
+        Ending Weight: <input type="text" name="end-weight" id="end"> lb <br>
+        <input type="submit" name="submit" onclick="getInputs(); getWarmupSetWeights(); roundUpWarmupSetWeights(); getOneSideWeight(); updateHTML();" />
     </form>
 </div>
 
--->
+<!-- Saved form for webpage 
 <div class="test">
     Bar Weight: <p id="bar">45</p>
     Starting Weight:<p id="start">45</p>
     Ending Weight:<p id="end">135</p> 
 </div>
-  
+-->
   <div class="warmup-table">
       <table>
           <tr>
