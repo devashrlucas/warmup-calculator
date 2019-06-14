@@ -61,7 +61,7 @@ function getOneSideWeight() {
       tempOneSide = 0;
       oneSideWeight.push(tempOneSide);
     } else {
-      tempOneSide = roundUpWarmupSetWeights()[i] / 2;
+      tempOneSide = (roundUpWarmupSetWeights()[i] - 45 ) / 2;
       oneSideWeight.push(tempOneSide);
     }
   }
@@ -128,7 +128,7 @@ function weightLoop(x) {
 
 function updateHTML() {
   document.getElementById('first-set-weight').innerHTML = 'Empty bar';
-  document.getElementById('second-set-weight').innerHTML = roundUpWarmupSetWeights()[0];
+  document.getElementById('second-set-weight').innerHTML = 'Empty bar';
   document.getElementById('third-set-weight').innerHTML = roundUpWarmupSetWeights()[1];
   document.getElementById('fourth-set-weight').innerHTML = roundUpWarmupSetWeights()[2];
   document.getElementById('fifth-set-weight').innerHTML = roundUpWarmupSetWeights()[3];
