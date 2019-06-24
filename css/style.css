@@ -20,7 +20,7 @@ input[type=text] {
 table { 
     border-collapse: collapse;
     outline: solid #666 2px;
-    width: 45vw;
+    width: 90vw;
 }
 
 .inputs {
