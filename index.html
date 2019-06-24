@@ -9,12 +9,12 @@
 </head>
 
 <body>
-
+<h1>Warmup Calculator</h1>
 <div class="inputs">
     <form name="input-form" onsubmit="return false;" action="" method="POST">
-        Starting Weight: <input type="text" name="start-weight" id="start"> lb <br>
-        Ending Weight: <input type="text" name="end-weight" id="end"> lb <br>
-        <input type="submit" name="submit" onclick="getInputs(); getWarmupSetWeights(); roundUpWarmupSetWeights(); getOneSideWeight(); updateHTML();" />
+        Starting Weight <input type="text" name="start-weight" id="start"> lb <br>
+        Ending Weight <input type="text" name="end-weight" id="end"> lb <br>
+        <input type="submit" name="submit" id="submit" onclick="getInputs(); getWarmupSetWeights(); roundUpWarmupSetWeights(); getOneSideWeight(); updateHTML();" />
     </form>
 </div>
 
@@ -27,43 +27,52 @@
 -->
   <div class="warmup-table">
       <table>
-          <tr>
+          <tr id="r0">
+            <th> </th>
+            <th> </th>
             <th></th>
-            <th>Warmup Set</th>
             <th>Plates Needed (One Side)</th> 
           </tr>
-          <tr>
+          <tr id="r1">
             <td>5 x</td>
-            <td id="first-set-weight">XXX</td>
+            <td id="first-set-weight"></td>
+        <td></td>
             <td id="first-set-plates"></td>
           </tr>
-        <tr>
+        <tr id="r2">
             <td>5 x</td>
-            <td id="second-set-weight">XXX</td>
-            <td id="second-set-plates">ZZZ</td>
+            <td id="second-set-weight"></td>
+            <td></td>
+            <td id="second-set-plates"></td>
         </tr>
-        <tr>
+        <tr id="r3">
             <td>5 x</td>
-            <td id="third-set-weight">XXX</td>
-            <td id="third-set-plates">ZZZ</td>
+            <td id="third-set-weight"></td>
+            <td></td>
+            <td id="third-set-plates"></td>
         </tr>
-        <tr>
+        <tr id="r4">
             <td>3 x</td>
-            <td id="fourth-set-weight">XXX</td>
-            <td id="fourth-set-plates">ZZZ</td>
+            <td id="fourth-set-weight"></td>
+            <td></td>
+            <td id="fourth-set-plates"></td>
         </tr>
-        <tr>
+        <tr id="r5">
             <td>2 x</td>
-            <td id="fifth-set-weight">XXX</td>
-            <td id="fifth-set-plates">ZZZ</td>
+            <td id="fifth-set-weight"></td>
+            <td></td>
+            <td id="fifth-set-plates"></td>
         </tr>
-        <tr>
+        <tr id="r6">
             <td>5 x</td>
-            <td id="working-set-weight">XXX</td>
-            <td id="working-set-plates">ZZZ</td>
+            <td id="working-set-weight"></td>
+            <td></td>
+            <td id="working-set-plates"></td>
         </tr>
       </table>
   </div>
+<h4>Please note: calculations are based off using a 45lbs. Olympic bar and a 300lbs. Olympic weight plate set.</h3>
+
 </body>
 
 </html>

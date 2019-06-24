@@ -1,0 +1,45 @@
+body {
+    background-color: white;
+    margin: 2.5%;
+    font-size: 2em;
+    display: inline-block;
+    
+}
+
+input[type=text] {
+  width: 30vw;
+  height: 7.5vh;
+  margin-bottom: 1%;
+  background-color: #F0F8FF;
+  font-size: 1em;
+  text-align: center;
+}
+
+
+
+table { 
+    border-collapse: collapse;
+    outline: solid #666 2px;
+    width: 45vw;
+}
+
+.inputs {
+    display: inline-block;
+    text-align: center;
+}
+
+#submit {
+    -webkit-appearance: none;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 30vw;
+    height: 10vw;
+    border: solid #666 2px;
+    font-size: 1em;
+    font-weight: bold;
+    text-align: center;
+}
+
+#r2, #r4, #r6 {
+background-color: #F0F8FF;
+}
