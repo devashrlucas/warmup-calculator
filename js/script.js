@@ -1,16 +1,12 @@
-var inputWeight = getInputs();
-var inputWarmupSetWeights = getWarmupSetWeights();
-var inputRoundedWarmupSetWeight = roundUpWarmupSetWeights();
-var inputOneSideWeight = getOneSideWeight();
 
 
 function getInputs() {
-  let barText = '45';
-  let startInput = document.querySelector('#start').value;
+  const barText = '45';
+  const startInput = document.querySelector('#start').value;
   let startText = '';
-  let endInput = document.querySelector('#end').value;
+  const endInput = document.querySelector('#end').value;
   let endText = '';
-  let inputArray = [];
+  const inputArray = [];
   let i;
   inputArray.push(barText);
   for (i = 0; i < startInput.length; i += 1) {
@@ -25,8 +21,8 @@ function getInputs() {
 }
 
 function getWarmupSetWeights() {
-  let warmupSetWeights = [];
-  let weightJump = ((getInputs()[2] - getInputs()[1]) / 4);
+  const warmupSetWeights = [];
+  const weightJump = ((getInputs()[2] - getInputs()[1]) / 4);
   let tempJump = (Number(getInputs()[0]));
   let i;
 
@@ -40,7 +36,7 @@ function getWarmupSetWeights() {
 }
 
 function roundUpWarmupSetWeights() {
-  let roundedWarmupSetWeights = [];
+  const roundedWarmupSetWeights = [];
   let tempRounded = 0;
   let i;
 
@@ -52,7 +48,7 @@ function roundUpWarmupSetWeights() {
 }
 
 function getOneSideWeight() {
-  let oneSideWeight = [];
+  const oneSideWeight = [];
   let tempOneSide = 0;
   let i;
 
@@ -61,7 +57,7 @@ function getOneSideWeight() {
       tempOneSide = 0;
       oneSideWeight.push(tempOneSide);
     } else {
-      tempOneSide = (roundUpWarmupSetWeights()[i] - 45 ) / 2;
+      tempOneSide = (roundUpWarmupSetWeights()[i] - 45) / 2;
       oneSideWeight.push(tempOneSide);
     }
   }
@@ -69,20 +65,21 @@ function getOneSideWeight() {
 }
 
 function plateRemainder(weight, plate) {
-  let newRemainder = weight / plate;
-  let seperatedRemainder = [Math.floor(newRemainder), (weight % plate)];
+  const newRemainder = weight / plate;
+  const seperatedRemainder = [Math.floor(newRemainder), (weight % plate)];
   return seperatedRemainder;
 }
 
 function weightLoop(x) {
-  let weightLoopArray = [];
+  const weightLoopArray = [];
   let filteredArray = [];
   let formattedArray = [];
-  let remainder45 = plateRemainder(x, 45.0);
-  let remainder25 = plateRemainder(remainder45[1], 25.0);
-  let remainder10 = plateRemainder(remainder25[1], 10.0);
-  let remainder5 = plateRemainder(remainder10[1], 5.0);
-  let remainder2p5 = plateRemainder(remainder5[1], 2.5);
+  let i;
+  const remainder45 = plateRemainder(x, 45.0);
+  const remainder25 = plateRemainder(remainder45[1], 25.0);
+  const remainder10 = plateRemainder(remainder25[1], 10.0);
+  const remainder5 = plateRemainder(remainder10[1], 5.0);
+  const remainder2p5 = plateRemainder(remainder5[1], 2.5);
 
   for (i = 0; i < remainder45[0]; i += 1) {
     if (remainder45[0] === 0) {
@@ -119,13 +116,13 @@ function weightLoop(x) {
       weightLoopArray.push(2.5);
     }
   }
-  filteredArray = weightLoopArray.filter(function (f) {
-    return f != '';
-  });
+  // eslint-disable-next-line func-names
+  filteredArray = weightLoopArray.filter(f => f !== '');
   formattedArray = filteredArray.join(', ');
   return formattedArray;
 }
 
+// eslint-disable-next-line no-unused-vars
 function updateHTML() {
   document.getElementById('first-set-weight').innerHTML = 'Empty bar';
   document.getElementById('second-set-weight').innerHTML = 'Empty bar';
@@ -140,5 +137,4 @@ function updateHTML() {
   document.getElementById('fourth-set-plates').innerHTML = weightLoop(getOneSideWeight()[2]);
   document.getElementById('fifth-set-plates').innerHTML = weightLoop(getOneSideWeight()[3]);
   document.getElementById('working-set-plates').innerHTML = weightLoop(getOneSideWeight()[4]);
-
 }
