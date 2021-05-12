@@ -23,6 +23,6 @@
     "eslint-plugin-import": "^2.17.2"
   },
   "dependencies": {
-    "mathjs": "^5.10.0"
+    "mathjs": "^7.5.1"
   }
 }
